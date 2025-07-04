@@ -91,6 +91,39 @@ body {
   font-size: 1rem;
   color: #94a3b8;
   line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.proverb-context {
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.action-btn {
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  color: #fbbf24;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.action-btn:hover {
+  background: rgba(251, 191, 36, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(251, 191, 36, 0.2);
 }
 
 /* Main Content */
@@ -154,6 +187,8 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 10;
+  width: 40px;
+  height: 40px;
 }
 
 .orisha-star:hover {
@@ -190,7 +225,7 @@ body {
   top: 25px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: #e2e8f0;
   white-space: nowrap;
@@ -198,11 +233,55 @@ body {
   padding: 0.25rem 0.5rem;
   border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 60px;
+  text-align: center;
 }
 
 @keyframes pulse {
   0%, 100% { transform: scale(1); opacity: 0.7; }
   50% { transform: scale(1.1); opacity: 1; }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header h2 {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.8rem;
+  color: #fbbf24;
 }
 
 /* Orisha Profile Modal */
@@ -417,6 +496,284 @@ body {
   font-size: 0.95rem;
 }
 
+/* Proverb Shelf Styles */
+.proverb-shelf {
+  max-width: 1000px;
+}
+
+.search-section {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.search-bar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: #e2e8f0;
+  font-size: 1rem;
+}
+
+.search-bar input::placeholder {
+  color: #94a3b8;
+}
+
+.search-bar button {
+  background: rgba(251, 191, 36, 0.2);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  color: #fbbf24;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-bar button:hover {
+  background: rgba(251, 191, 36, 0.3);
+}
+
+.proverb-content {
+  padding: 2rem;
+}
+
+.categories-grid h3 {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.5rem;
+  color: #fbbf24;
+  margin-bottom: 1.5rem;
+}
+
+.category-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.category-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.category-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.category-card h4 {
+  font-size: 1.2rem;
+  color: #fbbf24;
+  margin-bottom: 0.5rem;
+}
+
+.category-card p {
+  color: #cbd5e1;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.proverb-count {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.category-header,
+.search-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.category-header h3,
+.search-header h3 {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.5rem;
+  color: #fbbf24;
+}
+
+.back-btn {
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #93c5fd;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: rgba(59, 130, 246, 0.3);
+}
+
+.proverbs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.proverb-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.category-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(168, 85, 247, 0.3);
+  color: #c4b5fd;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+/* Folktale Library Styles */
+.folktale-library {
+  max-width: 1000px;
+}
+
+.library-content {
+  padding: 2rem;
+}
+
+.library-intro {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.1rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.tales-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.tale-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tale-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.tale-card h3 {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.3rem;
+  color: #fbbf24;
+  margin-bottom: 0.5rem;
+}
+
+.tale-title-yoruba {
+  color: #cbd5e1;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.tale-summary {
+  color: #94a3b8;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.tale-characters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.character-tag {
+  background: rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #86efac;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+}
+
+/* Folktale Reader Styles */
+.folktale-reader {
+  max-width: 800px;
+}
+
+.tale-content {
+  padding: 2rem;
+}
+
+.tale-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.tale-header h3 {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.5rem;
+  color: #cbd5e1;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.tale-story h4,
+.tale-moral h4,
+.tale-characters h4 {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.3rem;
+  color: #fbbf24;
+  margin-bottom: 1rem;
+}
+
+.story-text {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+  margin-bottom: 2rem;
+}
+
+.moral-text {
+  font-family: 'Crimson Text', serif;
+  font-size: 1rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.character-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
 .loading {
   text-align: center;
   padding: 2rem;
@@ -435,7 +792,12 @@ body {
     min-height: 400px;
   }
   
-  .orisha-profile-container {
+  .orisha-name {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+  }
+  
+  .modal-container {
     margin: 0.5rem;
     max-height: 95vh;
   }
@@ -451,6 +813,22 @@ body {
   .orisha-attributes {
     grid-template-columns: 1fr;
   }
+  
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .search-bar {
+    flex-direction: column;
+  }
+  
+  .category-header,
+  .search-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -463,7 +841,16 @@ body {
   }
   
   .orisha-name {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
+    padding: 0.1rem 0.3rem;
+  }
+  
+  .tales-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .category-cards {
+    grid-template-columns: 1fr;
   }
 }
 
